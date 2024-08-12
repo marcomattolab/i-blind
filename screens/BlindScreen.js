@@ -9,6 +9,7 @@ const BlindScreen = () => {
   const route = useRoute();
   const name = route.params.name;
   const question = route.params.question;
+  const description = route.params.description;
   
   const navigation = useNavigation();
   const { completed, setCompleted } = useContext(FitnessItems);
@@ -38,7 +39,8 @@ const BlindScreen = () => {
                 
                 <View style={{ marginLeft: 10 }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>{name}</Text>
-                  <Text style={{ fontSize: 15, fontWeight: "italic" }}>{question}</Text>
+                  <Text style={{ marginTop: 15, fontSize: 15, fontWeight: "italic" }}>{question}</Text>
+                  <Text style={{ marginTop: 15, fontSize: 14, color: "gray" }}>{description}</Text>
                 </View>
               </View>          
             </TouchableOpacity>

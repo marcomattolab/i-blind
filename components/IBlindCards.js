@@ -16,6 +16,7 @@ const IBlindCards = () => {
             name: item.name,
             question: item.question,
             description: item.description,
+            answer: item.answer,
             id: item.id
           })} style={{alignItems: 'center', justifyContent: "center", marginTop: 10, marginBottom: 10}} key={id}>
             <Image style={{ width: "100%", height: 120, borderRadius: 12 }} source={{uri: item.image}} />

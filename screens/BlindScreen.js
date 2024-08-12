@@ -1,17 +1,48 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import { Image, ScrollView, TouchableOpacity, View, Text } from 'react-native'
+import { Image, ScrollView, TouchableOpacity, View, Text, Button , ActivityIndicator} from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AppItems } from '../Context';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const BlindScreen = () => {
   const route = useRoute();
   const name = route.params.name;
   const question = route.params.question;
+  const answer = route.params.answer;
   const description = route.params.description;
+
   const navigation = useNavigation();
   const { completed, setCompleted } = useContext(AppItems);
+
+  // GEMINI
+  const genAI = new GoogleGenerativeAI('API KEY');
+  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+  const [aiResponse, setResponse] = useState('');
+  const [loading, setLoading] = useState(false); 
+
+  const aiRun = async () => {
+    const prompt = `${question}`;
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
+    console.log("### Gemini response => ",text);
+    setResponse(text);
+  }
+
+  const aiRunMocked = async () => {
+    setLoading(true); 
+    try {
+      const data = {responses: answer };
+      setResponse(data.responses || '');
+    } catch (error) {
+      console.error('Error fetching response: ', error);
+    } finally {
+      setLoading(false); 
+    }
+  };
+
 
   return (
     <>
@@ -49,8 +80,21 @@ const BlindScreen = () => {
       </ScrollView>
 
 
-
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        {loading ? (
+          <ActivityIndicator size="large" color="#007bff" />
+        ) : (
+            <View style={{ marginBottom: 20 }}>
+              <Text style={{ fontWeight: 'bold' , padding: 20}}>
+                {aiResponse}
+              </Text>
+            </View>
+          )
+       }
+      </View>
+      
       <TouchableOpacity 
+         onPress={aiRunMocked}
          style={{ backgroundColor: "#198f51", padding: 12, marginHorizontal: 15, marginVertical: 20, borderRadius: 50}}>
         <Text style={{ textAlign: "center", color: "#fff", fontWeight: "bold", fontSize: 20 }}><MaterialCommunityIcons name="whistle" size={24} color="white" /> Ask Gemini!</Text>
       </TouchableOpacity>

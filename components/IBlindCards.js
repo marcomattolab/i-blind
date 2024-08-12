@@ -13,7 +13,8 @@ const IBlindCards = () => {
         APPData.map((item, id) => (
           <TouchableOpacity onPress={() => navigation.navigate("Blind", {
             image: item.image, 
-            exercises: item.exercises,
+            name: item.name,
+            question: item.question,
             id: item.id
           })} style={{alignItems: 'center', justifyContent: "center", marginTop: 10, marginBottom: 10}} key={id}>
             <Image style={{ width: "100%", height: 120, borderRadius: 12 }} source={{uri: item.image}} />

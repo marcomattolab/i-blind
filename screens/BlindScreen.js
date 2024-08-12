@@ -3,16 +3,15 @@ import { Image, ScrollView, TouchableOpacity, View, Text } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useContext } from 'react';
-import { FitnessItems } from '../Context';
+import { AppItems } from '../Context';
 
 const BlindScreen = () => {
   const route = useRoute();
   const name = route.params.name;
   const question = route.params.question;
   const description = route.params.description;
-  
   const navigation = useNavigation();
-  const { completed, setCompleted } = useContext(FitnessItems);
+  const { completed, setCompleted } = useContext(AppItems);
 
   return (
     <>
@@ -39,7 +38,7 @@ const BlindScreen = () => {
                 
                 <View style={{ marginLeft: 10 }}>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>{name}</Text>
-                  <Text style={{ marginTop: 15, fontSize: 15, fontWeight: "italic" }}>{question}</Text>
+                  <Text style={{ marginTop: 15, fontSize: 15 }}>{question}</Text>
                   <Text style={{ marginTop: 15, fontSize: 14, color: "gray" }}>{description}</Text>
                 </View>
               </View>          

@@ -2,12 +2,16 @@ import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-nati
 import IBlindCards from '../components/IBlindCards';
 import { Ionicons } from '@expo/vector-icons';
 import { useContext, useState } from 'react';
-import { FitnessItems } from '../Context';
+import { AppItems } from '../Context';
 
 const HomeScreen = () => {
   const [showIcon, setShowIcon] = useState(false);
-  const { calories, minutes, workout, } = useContext(FitnessItems);
 
+  // TODO DEVELOP THIS
+  let maps = 1;
+  let interactions = 10;
+  let recognized = 50;
+  
   return (
     <ScrollView showsVerticalScrollIndicator={false}
       style={{ marginTop: 20 }}>
@@ -17,7 +21,10 @@ const HomeScreen = () => {
 
           {/* Dark Mode  */}
           <TouchableOpacity onPress={() => setShowIcon(!showIcon)}>
-            {showIcon ? <Ionicons name="sunny" size={24} color="white" /> : <Ionicons name="moon" size={24} color="white" /> }
+            {showIcon ? 
+            <Ionicons name="sunny" size={24} color="white" /> 
+            : 
+            <Ionicons name="moon" size={24} color="black" /> }
           </TouchableOpacity>  
         </View>
 
@@ -26,19 +33,19 @@ const HomeScreen = () => {
 
           {/* First Card  */}
           <View style={styles.shadowCards}>
-            <Text style={{ fontWeight: "bold", fontSize: 18 }}>{calories.toFixed(2)}</Text>
+            <Text style={{ fontWeight: "bold", fontSize: 18 }}>{interactions}</Text>
             <Text>Interactions</Text>
           </View>
 
           {/* Second Card  */}
           <View style={styles.shadowCards}>
-            <Text style={{ fontWeight: "bold", fontSize: 18 }}>{workout}</Text>
+            <Text style={{ fontWeight: "bold", fontSize: 18 }}>{maps}</Text>
             <Text>Maps</Text>
           </View>
 
           {/* Third Card  */}
           <View style={styles.shadowCards}>
-            <Text style={{ fontWeight: "bold", fontSize: 18 }}>{minutes}</Text>
+            <Text style={{ fontWeight: "bold", fontSize: 18 }}>{recognized}</Text>
             <Text>Recognized</Text>
           </View>
         </View>

@@ -11,7 +11,7 @@ const IBlindCards = () => {
     <View style={{marginTop: 80, marginHorizontal: 20, marginBottom: 20}}>
       {
         APPData.map((item, id) => (
-          <TouchableOpacity onPress={() => navigation.navigate("Workout", {
+          <TouchableOpacity onPress={() => navigation.navigate("Blind", {
             image: item.image, 
             exercises: item.exercises,
             id: item.id

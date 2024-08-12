@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { FitnessItems } from '../Context';
 
-const WorkoutScreen = () => {
+const BlindScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const { completed, setCompleted } = useContext(FitnessItems);
@@ -55,4 +55,4 @@ const WorkoutScreen = () => {
   )
 }
 
-export default WorkoutScreen
+export default BlindScreen

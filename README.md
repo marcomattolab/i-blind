@@ -2,10 +2,10 @@
 
   <h2 align="center">iBlind</h2>
 
-GeminiGuide: A Voice-Assisted Navigation App for the Visually Impaired
+iblind: A Voice-Assisted Navigation App for the Visually Impaired
 
 ## Overview
-GeminiGuide is a mobile application designed to assist visually impaired individuals with indoor navigation. By leveraging the power of a language model like Gemini, the app provides real-time, voice-based guidance and information about the user's surroundings.
+iblind is a mobile application designed to assist visually impaired individuals with indoor navigation. By leveraging the power of a language model like Gemini, the app provides real-time, voice-based guidance and information about the user's surroundings.
 
 
 <img src="https://github.com/marcomattolab/i-blind/blob/main/readme-images/React-Native-IBlind-App.jpeg"/>
